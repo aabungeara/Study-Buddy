@@ -1,0 +1,65 @@
+[
+  {
+    "id": "1",
+    "title": "React Documentation",
+    "category": "Programming",
+    "link": "https://react.dev",
+    "description": "Official React documentation with tutorials and API reference"
+  },
+  {
+    "id": "2",
+    "title": "Coursera",
+    "category": "General",
+    "link": "https://www.coursera.org",
+    "description": "Online courses from top universities"
+  },
+  {
+    "id": "3",
+    "title": "MDN Web Docs",
+    "category": "Programming",
+    "link": "https://developer.mozilla.org",
+    "description": "Comprehensive web development documentation"
+  },
+  {
+    "id": "4",
+    "title": "Quizlet",
+    "category": "Study Tools",
+    "link": "https://quizlet.com",
+    "description": "Flashcards and study games for any subject"
+  },
+  {
+    "id": "5",
+    "title": "GitHub Student Pack",
+    "category": "Programming",
+    "link": "https://education.github.com/pack",
+    "description": "Free developer tools for students"
+  },
+  {
+    "id": "6",
+    "title": "Grammarly",
+    "category": "Writing",
+    "link": "https://www.grammarly.com",
+    "description": "AI-powered writing assistant"
+  },
+  {
+    "id": "7",
+    "title": "Notion Templates",
+    "category": "Study Tools",
+    "link": "https://www.notion.so/templates",
+    "description": "Templates for notes, projects, and planning"
+  },
+  {
+    "id": "8",
+    "title": "YouTube EDU",
+    "category": "General",
+    "link": "https://www.youtube.com/edu",
+    "description": "Educational videos from top creators"
+  },
+  {
+    "id": "9",
+    "title": "Stack Overflow",
+    "category": "Programming",
+    "link": "https://stackoverflow.com",
+    "description": "Q&A platform for developers"
+  }
+]

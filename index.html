@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Buddy</title>
+  <meta name="description"
+    content="Organize tasks, track habits, and access learning resources - all in one student productivity app.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.js">
+</head>
+
+<body>
+  <!-- App Shell -->
+  <header class="header">
+    <div class="container header-content">
+      <div class="logo">
+        <div class="logo-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" />
+          </svg>
+        </div>
+        <span class="logo-text">Study<span class="logo-accent">Buddy</span></span>
+      </div>
+
+      <nav class="nav-desktop" id="navDesktop">
+        <a href="#dashboard" class="nav-link active" data-section="dashboard">Dashboard</a>
+        <a href="#tasks" class="nav-link" data-section="tasks">Tasks</a>
+        <a href="#habits" class="nav-link" data-section="habits">Habits</a>
+        <a href="#resources" class="nav-link" data-section="resources">Resources</a>
+        <a href="#settings" class="nav-link" data-section="settings">Settings</a>
+      </nav>
+
+      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+        <svg class="hamburger-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4" x2="20" y1="12" y2="12" />
+          <line x1="4" x2="20" y1="6" y2="6" />
+          <line x1="4" x2="20" y1="18" y2="18" />
+        </svg>
+        <svg class="hamburger-close hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="M18 6 6 18" />
+          <path d="m6 6 12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <nav class="nav-mobile hidden" id="navMobile">
+      <a href="#dashboard" class="nav-link-mobile active" data-section="dashboard">Dashboard</a>
+      <a href="#tasks" class="nav-link-mobile" data-section="tasks">Tasks</a>
+      <a href="#habits" class="nav-link-mobile" data-section="habits">Habits</a>
+      <a href="#resources" class="nav-link-mobile" data-section="resources">Resources</a>
+      <a href="#settings" class="nav-link-mobile" data-section="settings">Settings</a>
+    </nav>
+  </header>
+
+  <main class="main container">
+    <!-- Start Dashboard Section -->
+    <section id="dashboard" class="section active">
+      <div class="section-header">
+        <h1 class="section-title">Welcome back! 👋</h1>
+        <p class="section-subtitle" id="currentDate"></p>
+      </div>
+
+      <div class="summary-cards">
+        <div class="summary-card warning">
+          <div class="card-content">
+            <p class="card-label">Tasks Due Soon</p>
+            <p class="card-value" id="tasksDueSoon">0</p>
+            <p class="card-subtitle">Next 2 days</p>
+          </div>
+          <div class="card-icon warning">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+          </div>
+        </div>
+
+        <div class="summary-card success">
+          <div class="card-content">
+            <p class="card-label">Completed Tasks</p>
+            <p class="card-value" id="completedTasks">0</p>
+            <p class="card-subtitle" id="totalTasks">of 0 total</p>
+          </div>
+          <div class="card-icon success">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+              <polyline points="22 4 12 14.01 9 11.01" />
+            </svg>
+          </div>
+        </div>
+
+        <div class="summary-card primary">
+          <div class="card-content">
+            <p class="card-label">Active Tasks</p>
+            <p class="card-value" id="activeTasks">0</p>
+            <p class="card-subtitle">In progress</p>
+          </div>
+          <div class="card-icon primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="8" x2="21" y1="6" y2="6" />
+              <line x1="8" x2="21" y1="12" y2="12" />
+              <line x1="8" x2="21" y1="18" y2="18" />
+              <line x1="3" x2="3.01" y1="6" y2="6" />
+              <line x1="3" x2="3.01" y1="12" y2="12" />
+              <line x1="3" x2="3.01" y1="18" y2="18" />
+            </svg>
+          </div>
+        </div>
+
+        <div class="summary-card accent">
+          <div class="card-content">
+            <p class="card-label">Habit Goals Met</p>
+            <p class="card-value" id="habitsGoalsMet">0</p>
+            <p class="card-subtitle" id="totalHabits">of 0 habits</p>
+          </div>
+          <div class="card-icon accent">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="progress-section">
+        <div class="progress-card">
+          <div class="progress-header">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="icon-primary">
+              <path d="m22 2-7 20-4-9-9-4Z" />
+              <path d="M22 2 11 13" />
+            </svg>
+            <h3>Task Progress</h3>
+          </div>
+          <div class="progress-info">
+            <span>Overall Completion</span>
+            <span id="taskProgressPercent">0%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="taskProgressBar" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <div class="progress-card">
+          <div class="progress-header">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-accent">
+              <path
+                d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" />
+            </svg>
+            <h3>Weekly Habits</h3>
+          </div>
+          <div class="progress-info">
+            <span>Goals Achieved</span>
+            <span id="habitProgressPercent">0%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill accent" id="habitProgressBar" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="upcoming-section">
+        <div class="section-header-small">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-primary">
+            <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+            <line x1="16" x2="16" y1="2" y2="6" />
+            <line x1="8" x2="8" y1="2" y2="6" />
+            <line x1="3" x2="21" y1="10" y2="10" />
+          </svg>
+          <h3>Upcoming Tasks</h3>
+        </div>
+        <div id="upcomingTasks" class="upcoming-list">
+          <p class="empty-state">No upcoming tasks. Add some to get started!</p>
+        </div>
+      </div>
+    </section>
+    <!-- End Dashboard Section -->
+
+    <!-- Start Tasks Section -->
+    <section id="tasks" class="section">
+      <div class="section-header-row">
+        <div>
+          <h1 class="section-title">Tasks</h1>
+          <p class="section-subtitle">Manage your assignments and todos</p>
+        </div>
+        <button class="btn btn-primary" id="addTaskBtn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14" />
+            <path d="M12 5v14" />
+          </svg>
+          Add Task
+        </button>
+      </div>
+
+      <div class="filters">
+        <div class="search-box">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
+          <input type="text" id="taskSearch" placeholder="Search tasks..." class="search-input">
+        </div>
+        <select id="taskStatusFilter" class="filter-select">
+          <option value="all">All</option>
+          <option value="active">Active</option>
+          <option value="completed">Completed</option>
+        </select>
+        <select id="taskCategoryFilter" class="filter-select">
+          <option value="all">All Categories</option>
+          <option value="Study">Study</option>
+          <option value="Homework">Homework</option>
+          <option value="Project">Project</option>
+          <option value="Exam">Exam</option>
+          <option value="Reading">Reading</option>
+          <option value="Other">Other</option>
+        </select>
+        <select id="taskSortBy" class="filter-select">
+          <option value="dueDate">Due Date</option>
+          <option value="priority">Priority</option>
+        </select>
+      </div>
+
+      <div id="tasksList" class="tasks-list">
+        <p class="empty-state">No tasks found. Add your first task to get started!</p>
+      </div>
+    </section>
+    <!-- End Tasks Section -->
+
+    <!-- Start Habits Section -->
+    <section id="habits" class="section">
+      <div class="section-header-row">
+        <div>
+          <h1 class="section-title">Habits</h1>
+          <p class="section-subtitle">Track your weekly habits and build streaks</p>
+        </div>
+        <button class="btn btn-primary" id="addHabitBtn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14" />
+            <path d="M12 5v14" />
+          </svg>
+          Add Habit
+        </button>
+      </div>
+
+      <div class="habit-summary">
+        <div class="habit-stat">
+          <p class="stat-value" id="totalDaysCompleted">0</p>
+          <p class="stat-label">Days Completed</p>
+        </div>
+        <div class="habit-stat accent">
+          <p class="stat-value" id="goalsAchieved">0</p>
+          <p class="stat-label">Goals Achieved</p>
+        </div>
+        <div class="habit-stat primary">
+          <p class="stat-value" id="overallHabitProgress">0%</p>
+          <p class="stat-label">Overall Progress</p>
+        </div>
+      </div>
+
+      <div id="habitsList" class="habits-list">
+        <div class="empty-state-box">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="empty-icon">
+            <path
+              d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" />
+          </svg>
+          <p>No habits yet. Add your first habit to start tracking!</p>
+        </div>
+      </div>
+    </section>
+    <!-- End Habits Section -->
+
+    <!-- Start Resources Section -->
+    <section id="resources" class="section">
+      <div class="section-header">
+        <h1 class="section-title">Resources</h1>
+        <p class="section-subtitle">Curated learning materials and tools</p>
+      </div>
+
+      <div class="filters">
+        <div class="search-box">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
+          <input type="text" id="resourceSearch" placeholder="Search resources..." class="search-input">
+        </div>
+        <select id="resourceCategoryFilter" class="filter-select">
+          <option value="all">All Categories</option>
+        </select>
+        <button class="btn-filter" id="favoritesOnlyBtn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon
+              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+          </svg>
+          Favorites
+        </button>
+      </div>
+
+      <div id="resourcesLoading" class="loading-state">
+        <div class="spinner"></div>
+        <p>Loading resources...</p>
+      </div>
+
+      <div id="resourcesError" class="error-state hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10" />
+          <line x1="12" x2="12" y1="8" y2="12" />
+          <line x1="12" x2="12.01" y1="16" y2="16" />
+        </svg>
+        <p>Failed to load resources. Please try again.</p>
+        <button class="btn btn-secondary" id="retryResourcesBtn">Try Again</button>
+      </div>
+
+      <div id="resourcesList" class="resources-grid hidden"></div>
+    </section>
+    <!-- End Resources Section -->
+
+    <!-- Start Settings Section -->
+    <section id="settings" class="section">
+      <div class="section-header">
+        <h1 class="section-title">Settings</h1>
+        <p class="section-subtitle">Customize your experience</p>
+      </div>
+
+      <div class="settings-card">
+        <h3>Appearance</h3>
+        <div class="theme-options">
+          <button class="theme-option active" id="lightThemeBtn">
+            <div class="theme-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2" />
+                <path d="M12 20v2" />
+                <path d="m4.93 4.93 1.41 1.41" />
+                <path d="m17.66 17.66 1.41 1.41" />
+                <path d="M2 12h2" />
+                <path d="M20 12h2" />
+                <path d="m6.34 17.66-1.41 1.41" />
+                <path d="m19.07 4.93-1.41 1.41" />
+              </svg>
+            </div>
+            <span>Light</span>
+          </button>
+          <button class="theme-option" id="darkThemeBtn">
+            <div class="theme-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+              </svg>
+            </div>
+            <span>Dark</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="settings-card">
+        <h3>Data Management</h3>
+        <p class="settings-desc">Reset all your data including tasks, habits, and favorites. This action cannot be
+          undone.</p>
+        <button class="btn btn-danger" id="resetDataBtn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 6h18" />
+            <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+            <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+            <line x1="10" x2="10" y1="11" y2="17" />
+            <line x1="14" x2="14" y1="11" y2="17" />
+          </svg>
+          Reset All Data
+        </button>
+      </div>
+
+      <div class="settings-card">
+        <div class="about-header">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-primary">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 16v-4" />
+            <path d="M12 8h.01" />
+          </svg>
+          <h3>About StudyBuddy</h3>
+        </div>
+        <p class="about-text">StudyBuddy is a productivity app designed to help students organize their studies, track
+          habits, and access educational resources - all in one place.</p>
+        <div class="about-developer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+            <circle cx="12" cy="7" r="4" />
+          </svg>
+          <span>Developer</span>
+        </div>
+        <p class="developer-info">Student Project - Web Development Course (SDEV 2105)</p>
+        <p class="developer-info small">Islamic University of Gaza - 2025/2026</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 StudyBuddy - Student Planner & Habit Tracker</p>
+    </div>
+  </footer>
+  <!-- End Settings Section -->
+
+  <!-- Start Task Modal -->
+  <div class="modal-overlay hidden" id="taskModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="taskModalTitle">Add New Task</h2>
+        <button class="modal-close" id="closeTaskModal">&times;</button>
+      </div>
+      <form id="taskForm">
+        <div class="form-group">
+          <label for="taskTitle">Title *</label>
+          <input type="text" id="taskTitle" required placeholder="Task title">
+        </div>
+        <div class="form-group">
+          <label for="taskDescription">Description</label>
+          <textarea id="taskDescription" rows="3" placeholder="Add details..."></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="taskDueDate">Due Date</label>
+            <input type="date" id="taskDueDate">
+          </div>
+          <div class="form-group">
+            <label for="taskPriority">Priority</label>
+            <select id="taskPriority">
+              <option value="low">Low</option>
+              <option value="medium" selected>Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="taskCategory">Category</label>
+          <select id="taskCategory">
+            <option value="Study">Study</option>
+            <option value="Homework">Homework</option>
+            <option value="Project">Project</option>
+            <option value="Exam">Exam</option>
+            <option value="Reading">Reading</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" id="cancelTaskBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="saveTaskBtn">Add Task</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- End Task Modal -->
+
+  <!-- Start Habit Modal -->
+  <div class="modal-overlay hidden" id="habitModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Add New Habit</h2>
+        <button class="modal-close" id="closeHabitModal">&times;</button>
+      </div>
+      <form id="habitForm">
+        <div class="form-group">
+          <label for="habitName">Habit Name *</label>
+          <input type="text" id="habitName" required placeholder="e.g., Exercise, Read, Study">
+        </div>
+        <div class="form-group">
+          <label for="habitGoal">Weekly Goal: <span id="goalValue">5</span> days</label>
+          <input type="range" id="habitGoal" min="1" max="7" value="5" class="range-input">
+          <div class="range-labels">
+            <span>1 day</span>
+            <span>7 days</span>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" id="cancelHabitBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Add Habit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- End Habit Modal -->
+
+  <!-- Confirm Modal -->
+  <div class="modal-overlay hidden" id="confirmModal">
+    <div class="modal modal-small">
+      <div class="modal-header">
+        <div class="confirm-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+            <path d="M12 9v4" />
+            <path d="M12 17h.01" />
+          </svg>
+        </div>
+        <h2>Are you sure?</h2>
+      </div>
+      <p class="confirm-message">This will permanently delete all your tasks, habits, and favorites. This action cannot
+        be undone.</p>
+      <div class="modal-actions">
+        <button class="btn btn-secondary" id="cancelConfirmBtn">Cancel</button>
+        <button class="btn btn-danger" id="confirmResetBtn">Reset Data</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
