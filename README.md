@@ -70,7 +70,8 @@ The project follows a **mobile-first responsive design** and uses **localStorage
 
 ## 👨‍🎓 Student Information
 
-* **Name:** Ahmad Abu Naqira
+* **Name:** Ahmad Abu Ngeara
+* **Id:** 120203199
 * **Course:** Web Programming 1 (SDEV 2105)
 * **Semester:** First Semester 2025/2026
 
