@@ -1,8 +1,8 @@
-# [StudyBuddy SPA](https://aabungeara.github.io/Study-Buddy/)
+# [StudyBuddy SPA](https://github.com/aabungeara/Study-Buddy)
 
 ## 📌 Project Description
 
-StudyBuddy is a **Single Page Application (SPA)** built using **HTML, CSS, and Vanilla JavaScript**. The application helps students organize their academic life by managing tasks, tracking weekly habits, and saving useful learning resources — all in one place, [viste site](https://aabungeara.github.io/Study-Buddy/).
+StudyBuddy is a **Single Page Application (SPA)** built using **HTML, CSS, and Vanilla JavaScript**. The application helps students organize their academic life by managing tasks, tracking weekly habits, and saving useful learning resources — all in one place, [viste site](https://github.com/aabungeara/Study-Buddy).
 
 The project follows a **mobile-first responsive design** and uses **localStorage** to persist data without any backend.
 
