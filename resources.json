@@ -61,5 +61,26 @@
     "category": "Programming",
     "link": "https://stackoverflow.com",
     "description": "Q&A platform for developers"
+  },
+  {
+    "id": "10",
+    "title": "freeCodeCamp",
+    "category": "Programming",
+    "link": "https://www.freecodecamp.org",
+    "description": "Learn to code for free with interactive lessons and projects"
+  },
+  {
+    "id": "11",
+    "title": "Khan Academy",
+    "category": "General",
+    "link": "https://www.khanacademy.org",
+    "description": "Free education for math, science, and computing"
+  },
+  {
+    "id": "12",
+    "title": "Google Scholar",
+    "category": "Study Tools",
+    "link": "https://scholar.google.com",
+    "description": "Search engine for scholarly articles and research papers"
   }
 ]
