@@ -45,6 +45,16 @@ The project follows a **mobile-first responsive design** and uses **localStorage
 * Reset all stored data
 
 ---
+## 📸 Screenshots
+
+![Dashboard](https://github.com/aabungeara/Study-Buddy/issues/1)
+![Tasks](https://github.com/aabungeara/Study-Buddy/issues/2)
+![Habits](https://github.com/aabungeara/Study-Buddy/issues/3)
+![Resources](https://github.com/aabungeara/Study-Buddy/issues/4)
+![Settings](https://github.com/aabungeara/Study-Buddy/issues/5)
+
+
+
 
 ## 🛠️ Technologies Used
 
